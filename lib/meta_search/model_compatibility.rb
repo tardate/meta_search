@@ -23,7 +23,7 @@ module MetaSearch
     end
 
     class Name < String
-      attr_reader :singular, :plural, :element, :collection, :partial_path, :human
+      attr_reader :singular, :plural, :element, :collection, :partial_path, :human, :route_key, :param_key
       alias_method :cache_key, :collection
 
       def initialize
@@ -34,6 +34,8 @@ module MetaSearch
         @human = "Search".freeze
         @collection = "meta_search/searches".freeze
         @partial_path = "#{@collection}/#{@element}".freeze
+        @route_key = @plural
+        @param_key = @singular
       end
     end
 
